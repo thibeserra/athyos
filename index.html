@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athyos | Estética & Saúde</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #c9a050;
+            --accent-color: #25d366;
+            --bg-light: #f9f9f9;
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem !important;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            width: auto;
+        }
+
+        .cta-button:hover {
+            background-color: #b08b40;
+            transform: translateY(-3px);
+        }
+
+        .experience {
+            padding: 60px 5%;
+            background-color: var(--bg-light);
+        }
+
+        .experience-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .experience-image {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--white);
+        }
+
+        .experience-content {
+            flex: 1;
+            text-align: center;
+        }
+
+        .experience-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .pricing {
+            padding: 60px 5%;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 30px;
+            border-radius: 10px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: #fff;
+        }
+
+        .card.featured {
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            font-size: 0.9rem;
+            color: #666;
+            display: block;
+            font-weight: normal;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .features-list li i {
+            color: #2ecc71;
+            margin-right: 10px;
+            margin-top: 5px;
+            width: 18px;
+        }
+
+        .btn-detalhes {
+            color: var(--primary-color);
+            text-decoration: underline;
+            font-size: 0.85rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .prototype-section {
+            padding: 80px 5%;
+            background: #1a252f;
+            color: white;
+            text-align: center;
+        }
+
+        .prototype-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .prototype-badge {
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .prototype-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(201, 160, 80, 0.2);
+        }
+
+        .highlight-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #d1d8e0;
+            margin-bottom: 15px;
+        }
+
+        .text-gold {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .detalhes-tecnicos {
+            padding: 60px 5%;
+            background-color: var(--bg-light);
+        }
+
+        .container-tabela {
+            max-width: 900px;
+            margin: 0 auto;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .col-destaque {
+            background: #fffdf5;
+            font-weight: bold;
+        }
+
+        .final-cta {
+            padding: 80px 5%;
+            background: linear-gradient(rgba(201, 160, 80, 0.05), rgba(201, 160, 80, 0.1));
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            z-index: 9999;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 5%;
+            font-size: 0.85rem;
+        }
+
+        @media (min-width: 768px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.6rem !important;
+            }
+
+            .experience-container {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .experience-content {
+                text-align: left;
+            }
+
+            .experience-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .card.featured {
+                transform: scale(1.05);
+            }
+
+            .prototype-section h2 {
+                font-size: 2.8rem;
+            }
+
+            .highlight-box {
+                padding: 40px;
+            }
+
+            .highlight-box p {
+                font-size: 1.15rem;
+            }
+
+            .final-cta h2 {
+                font-size: 3.5rem;
+            }
+
+            .final-cta p {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">ATHYOS</div>
+        <nav><a href="https://wa.me/5511987875286?text=Olá!%20Estava%20no%20site%20da%20agência%20e%20fiquei%20interessado%20nos%20serviços%20de%20digitalização%20para%20minha%20empresa."
+                class="cta-button" style="padding: 8px 15px; font-size: 0.75rem;">Falar no WhatsApp</a></nav>
+    </header>
+
+    <section class="hero">
+        <h1>Elevando seu espaço de trabalho para um novo nível digital</h1>
+        <p>A vitrine digital que sua excelência exige</p>
+        <a href="https://wa.me/5511987875286?text=Olá!%20Estava%20no%20site%20da%20agência%20e%20fiquei%20interessado%20nos%20serviços%20de%20digitalização%20para%20minha%20empresa."
+            class="cta-button">Quero meu site agora</a>
+    </section>
+
+    <section class="experience">
+        <div class="experience-container">
+            <img src="imagem_thiago_beserra.png" alt="Sua Foto Profissional" class="experience-image">
+            <div class="experience-content">
+                <h2>Expertise de Grandes Corporações</h2>
+                <p>Mais de 10 anos de tecnologia em gigantes como Magalu e BTG Pactual.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="prototype-section">
+        <div class="prototype-content">
+            <span class="prototype-badge">Sua Essência, Nossa Técnica</span>
+            <h2>Sinta a experiência antes mesmo de começar</h2>
+
+            <div class="highlight-box">
+                <p>O seu espaço é movido por detalhes, cuidado e resultados impecáveis. No digital, não deve ser
+                    diferente. Não acreditamos em projetos genéricos ou decisões tomadas no escuro.</p>
+
+                <p>Nossa curadoria mergulha fundo na sua trajetória para criar uma <span class="text-gold">narrativa
+                        visual magnética</span>. Cada palavra e imagem são escolhidas estrategicamente para traduzir a
+                    atmosfera do seu consultório e o valor real de seus procedimentos.</p>
+
+                <p style="font-size: 1.2rem; margin: 25px 0; line-height: 1.4;" class="text-gold">
+                    <em>"Entregamos a você um protótipo exclusivo e sem custos, para que você veja sua autoridade
+                        ganhando forma antes de qualquer compromisso."</em>
+                </p>
+
+                <p style="font-size: 0.9rem; opacity: 0.7;">Você já conhece nosso histórico em grandes corporações.
+                    Agora, permita que sua marca receba o mesmo nível de tratamento premium.</p>
+            </div>
+
+            <a href="https://wa.me/5511987875286?text=Olá!%20Estava%20no%20site%20da%20agência%20e%20fiquei%20interessado%20nos%20serviços%20de%20digitalização%20para%20minha%20empresa."
+                class="cta-button">Solicitar Protótipo VIP</a>
+        </div>
+    </section>
+
+    <section class="pricing" id="planos">
+        <div class="pricing-header">
+            <h2>Nossos Planos</h2>
+            <p>Escolha a melhor opção para sua presença online</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="card">
+                <h3>Modelo Avulso</h3>
+                <div class="price">R$ 1.500 <span>Criação (em até 6x)</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Criação do Site (Home)</li>
+                    <li><i class="fas fa-check"></i> SSL (Apenas Instalação)</li>
+                    <li><i class="fas fa-times" style="color:#e74c3c"></i> Hospedagem e Domínio</li>
+                    <li><i class="fas fa-times" style="color:#e74c3c"></i> Suporte Técnico Grátis</li>
+                </ul>
+                <a href="#comparativo" class="btn-detalhes">Ver detalhes técnicos</a>
+                <a href="https://wa.me/5511987875286?text=Olá!%20Estava%20no%20site%20da%20agência%20e%20fiquei%20interessado%20nos%20serviços%20de%20digitalização%20para%20minha%20empresa."
+                    class="cta-button" style="background: var(--primary-color);">Contratar Avulso</a>
+            </div>
+
+            <div class="card featured">
+                <div
+                    style="background: var(--secondary-color); color: white; padding: 4px; position: absolute; top: 0; left: 0; width: 100%; text-align: center; border-radius: 8px 8px 0 0; font-size: 0.7rem; font-weight: bold;">
+                    MAIS VENDIDO</div>
+                <h3 style="margin-top: 10px;">Plano Start</h3>
+                <div class="price">R$ 1.200 <span>+ R$ 130/mês (em 10x)</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Criação do Site (Home)</li>
+                    <li><i class="fas fa-check"></i> Gestão Total de SSL</li>
+                    <li><i class="fas fa-check"></i> Hospedagem e Domínio Inclusos</li>
+                    <li><i class="fas fa-check"></i> Suporte Técnico Grátis</li>
+                </ul>
+                <a href="#comparativo" class="btn-detalhes">Ver benefícios exclusivos</a>
+                <a href="https://wa.me/5511987875286?text=Olá!%20Estava%20no%20site%20da%20agência%20e%20fiquei%20interessado%20nos%20serviços%20de%20digitalização%20para%20minha%20empresa."
+                    class="cta-button">Ser VIP no Start</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="detalhes-tecnicos" id="comparativo">
+        <div class="pricing-header">
+            <h2>Comparativo Detalhado</h2>
+            <p>Entenda as condições de manutenção e suporte</p>
+        </div>
+        <div class="container-tabela">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Recurso / Serviço</th>
+                        <th>Modelo Avulso</th>
+                        <th>Plano Start</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Suporte Técnico (Erros)</td>
+                        <td>R$ 150,00 por chamado</td>
+                        <td class="col-destaque">Incluso (Grátis)</td>
+                    </tr>
+                    <tr>
+                        <td>Gestão de Segurança (SSL)</td>
+                        <td>Por conta do cliente</td>
+                        <td class="col-destaque">Gestão Total (Selo Garantido)</td>
+                    </tr>
+                    <tr>
+                        <td>Inclusão de Nova Página</td>
+                        <td>R$ 400,00</td>
+                        <td class="col-destaque">R$ 280,00 (Condição VIP)</td>
+                    </tr>
+                    <tr>
+                        <td>Alteração em página existente</td>
+                        <td>R$ 150,00</td>
+                        <td class="col-destaque">R$ 119,00</td>
+                    </tr>
+                    <tr>
+                        <td>Hospedagem e Backups</td>
+                        <td>Cliente gerencia</td>
+                        <td class="col-destaque">Incluso e Automatizado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="final-cta-content">
+            <h2>VAMOS ELEVAR O<br>PADRÃO HOJE?</h2>
+            <p>Não imagine apenas o que podemos fazer. Veja o que já está nascendo:</p>
+            <a href="https://wa.me/5511987875286?text=Olá!%20Estava%20no%20site%20da%20agência%20e%20fiquei%20interessado%20nos%20serviços%20de%20digitalização%20para%20minha%20empresa."
+                class="cta-button">Garantir minha vitrine digital</a>
+        </div>
+    </section>
+
+    <a href="https://wa.me/5511987875286?text=Olá!%20Estava%20no%20site%20da%20agência%20e%20fiquei%20interessado%20nos%20serviços%20de%20digitalização%20para%20minha%20empresa."
+        class="whatsapp-fixed" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <footer>
+        <p>&copy; 2026 Athyos - Sites Institucionais. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]:not([href*="wa.me"])').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
